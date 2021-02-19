@@ -23,6 +23,8 @@
     // 设置TextVeiw
     self.view.backgroundColor = [UIColor whiteColor];
     self.textView = [[UITextView alloc] initWithFrame:kscreenFrame];
+    self.textView.font = [UIFont fontWithName:@"HelveticaNeue" size:22.0];
+    [self.textView becomeFirstResponder];
     [self.view addSubview:self.textView];
     
     // 设置导航栏标题
@@ -59,7 +61,10 @@
     }
     
     // 持久化存储
-    [PersistentManager saveNote:note];
+    BOOL success= [PersistentManager saveNote:note];
+    if (success) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
     
 }
 

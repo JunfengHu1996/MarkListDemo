@@ -30,7 +30,7 @@
     return notesArray;
 }
 
-+ (void)saveNote:(NSString *)note {
++ (BOOL)saveNote:(NSString *)note {
     NSArray *existedNotesArray = [self getNotes]; // 先取出存储了的笔记数组
     NSMutableArray *newestArray = [NSMutableArray arrayWithObject:note]; // 以新笔记为内容创建一个可变数组
     [newestArray addObjectsFromArray:existedNotesArray]; // 将已有的笔记添加到可变数组中
@@ -41,7 +41,9 @@
     [newNotesData writeToFile:[self path] options:NSDataWritingAtomic error:&error];
     if (error) {
         NSLog(@"存储异常");
+        return NO;
     }
+    return YES;
 }
 
 + (NSString *)path {

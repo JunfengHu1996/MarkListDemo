@@ -11,9 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PersistentManager : NSObject
 
-+ (void)saveNote:(NSString *)note;
-
 + (NSArray *)getNotes;
++ (BOOL)saveNote:(NSString *)note;
 
 @end
 

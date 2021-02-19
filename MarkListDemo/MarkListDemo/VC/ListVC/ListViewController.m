@@ -8,12 +8,14 @@
 #import "ListViewController.h"
 #import "ScreenSizeUtility.h"
 #import "PostViewController.h"
+#import "PersistentManager.h"
 
 static NSString * const cellIdentifier = @"cellIdentifier";
 
 @interface ListViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, copy) NSArray *dataArray;
 
 @end
 
@@ -26,6 +28,9 @@ static NSString * const cellIdentifier = @"cellIdentifier";
     self.view.backgroundColor = [UIColor whiteColor];
     [self setTitleWithText:@"收藏"];
     
+    // 设置导航栏添加笔记按钮
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNote)];
+    
     // tableView初始化、添加到父view
     self.tableView = [[UITableView alloc] initWithFrame:kscreenFrame];
     self.tableView.delegate = self;
@@ -34,11 +39,26 @@ static NSString * const cellIdentifier = @"cellIdentifier";
     
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.dataArray = [PersistentManager getNotes];
+    // 每一次页面ListView出现的时候都获取笔记数据，刷新tableViw
+    [self.tableView reloadData];
+}
+
+#pragma mark - private
+-(void)addNote {
+    PostViewController *postVC = [PostViewController new];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:postVC];
+    navController.modalPresentationStyle = UIModalPresentationFullScreen; // 设置为FullScreen，完成笔记后PostVC消失后，才会触发ListView的ViewDidAppear
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // 先写个默认的
-    return 10;
+    return [self.dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
