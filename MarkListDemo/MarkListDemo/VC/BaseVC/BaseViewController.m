@@ -7,6 +7,8 @@
 
 #import "BaseViewController.h"
 
+#define kBlueColor [UIColor colorWithRed:0.2 green:0.46 blue:0.72 alpha:1.0]
+
 @interface BaseViewController ()
 
 @end
@@ -15,17 +17,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // 设置导航栏颜色、状态栏样式
+    self.navigationController.navigationBar.barTintColor = kBlueColor;
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+// 所有VC通用设置导航栏标题的方法
+- (void)setTitleWithText:(NSString *)text {
+    // 创建一个自定义的UILable作为navigationItem的titleView
+    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 40)];
+    // 颜色相关
+    titleLable.textColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor]; // 设置导航栏的barButtonItem等的文字颜色
+    // 文字相关
+    titleLable.textAlignment = NSTextAlignmentCenter;
+    titleLable.text = text;
+    titleLable.font = [UIFont boldSystemFontOfSize:18.0f];
+    
+    self.navigationItem.titleView = titleLable;
 }
-*/
 
 @end
