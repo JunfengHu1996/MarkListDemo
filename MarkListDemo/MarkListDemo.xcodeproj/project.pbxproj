@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930A593525E00C5400192E0B /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 930A593425E00C5400192E0B /* TableViewCell.m */; };
 		930EE77925864E35008610B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 930EE77825864E35008610B8 /* AppDelegate.m */; };
 		930EE78225864E35008610B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930EE78025864E35008610B8 /* Main.storyboard */; };
 		930EE78425864E36008610B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 930EE78325864E36008610B8 /* Assets.xcassets */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		930A593325E00C5400192E0B /* TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		930A593425E00C5400192E0B /* TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		930EE77425864E35008610B8 /* MarkListDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarkListDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		930EE77725864E35008610B8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		930EE77825864E35008610B8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -54,8 +57,18 @@
 		930A593025E0011800192E0B /* VIew */ = {
 			isa = PBXGroup;
 			children = (
+				930A593225E00C2500192E0B /* TableViewCell */,
 			);
 			path = VIew;
+			sourceTree = "<group>";
+		};
+		930A593225E00C2500192E0B /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				930A593325E00C5400192E0B /* TableViewCell.h */,
+				930A593425E00C5400192E0B /* TableViewCell.m */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		930EE76B25864E35008610B8 = {
@@ -237,6 +250,7 @@
 				93B2491B2592288500068E64 /* PostViewController.m in Sources */,
 				93B2490C259196F500068E64 /* ScreenSizeUtility.m in Sources */,
 				9376596325930F780096785E /* PersistentManager.m in Sources */,
+				930A593525E00C5400192E0B /* TableViewCell.m in Sources */,
 				93821A962590B64D00D1115D /* ListViewController.m in Sources */,
 				930EE78A25864E36008610B8 /* main.m in Sources */,
 			);

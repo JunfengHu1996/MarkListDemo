@@ -5,10 +5,11 @@
 //  Created by 胡俊峰 on 12/21/20.
 //
 
-#import "ListViewController.h"
+#import "TableViewCell.h"
 #import "ScreenSizeUtility.h"
-#import "PostViewController.h"
 #import "PersistentManager.h"
+#import "ListViewController.h"
+#import "PostViewController.h"
 
 static NSString * const cellIdentifier = @"cellIdentifier";
 
@@ -57,16 +58,16 @@ static NSString * const cellIdentifier = @"cellIdentifier";
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // 先写个默认的
+    // 笔记的个数
     return [self.dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // 先写个默认的
-    UITableViewCell *tableViewCell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (tableViewCell == nil) {
-        tableViewCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
+    // 设置cell
+    TableViewCell *tableViewCell = [TableViewCell prepareCellForTableView:tableView];
+    // 拿数据，并设置到label中
+    [tableViewCell setContentWithNote:self.dataArray[indexPath.row]];
+    
     return tableViewCell;
 }
 
@@ -76,8 +77,7 @@ static NSString * const cellIdentifier = @"cellIdentifier";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    PostViewController *postVC = [PostViewController new];
-    [self.navigationController pushViewController:postVC animated:YES];
+    // 还没做任何事情
 }
 
 @end
